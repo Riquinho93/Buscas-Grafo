@@ -1,12 +1,21 @@
 import os
 
-
 class Vertice:
     def __init__(self, rotulo):
         self.rotulo = rotulo
+        self.visitado = False
 
     def igualA(self, r):
         return r == self.rotulo
+
+    def foiVisitado(self):
+        return self.visitado
+
+    def registrarVisitado(self):
+        self.visitado = True
+
+    def limpa(self):
+        self.visitado = False
 
 
 class Grafo:
@@ -52,13 +61,50 @@ class Grafo:
             if self.listaVertice[i].igualA(rotulo): return i
         return -1
 
+    def obtemAdjacenteNaoVisitado(self, v):
+        for i in range(self.numVertice):
+            if self.matrizAdjacencias[v][i] == 1 and self.listaVertice[i].foiVisitado() == False:
+                return i
+        return -1  # se não encontrar o elemento
+
+    def dfs(self, inicio, fim):
+        pilha = []   #pilha em python funciona como lista
+        self.listaVertice[inicio].registrarVisitado()
+        pilha.append(inicio) # funciona como push
+        while len(pilha) != 0:
+            elementoAnalisar = pilha[len(pilha) - 1] # retina o elemento sem remover da pilha
+            if elementoAnalisar == fim: # se não é o ultimo elemento
+                print()
+                print("------ BUSCA EM PROFUNDIDADE ------ ")
+                print()
+                print("Caminho encontrado: ", end=" ")
+                for i in pilha:
+                    print(self.listaVertice[i].rotulo,"->", end=" ")
+                print()
+                print()
+                print()
+                break
+            v = self.obtemAdjacenteNaoVisitado(elementoAnalisar)
+            if v == -1:
+                pilha.pop()   # removendo o elemento da pilha
+            else:
+                self.listaVertice[v].registrarVisitado()
+                pilha.append(v)
+        else:
+            print()
+            print("Busca sem sucesso!")
+            print()
+        for i in self.listaVertice:
+            i.limpa() # limpando para fazer outra busca
+
+
 
 if __name__ == "__main__":
   #  os.system("clear")
     grf = Grafo()
     while True:
         print("Escolha sua opção: ")
-        print("(M)ostrar, (V)ertices e (A)rcos ")
+        print("(M)ostrar, (V)ertices,  (A)rcos e (P)rofundidade ")
         escolha = str(input("Digite sua opção: ")).lower()
         if escolha == 'm':
             grf.imprimirMatriz()
@@ -79,6 +125,20 @@ if __name__ == "__main__":
                 input()
                 continue
             grf.adicionaArco(inicio, fim)
+        elif escolha == 'p':
+            rinicio = str(input("Digite o rotulo do vertice do arco inicial: "))
+            inicio = grf.localizaRotulo(rinicio)
+            if inicio == -1:
+                print("Vertice nao cadastrado!")
+                input()
+                continue
+            rfim = str(input("Digite o rotulo do vertice do arco final: "))
+            fim = grf.localizaRotulo(rfim)
+            if fim == -1:
+                print("Vertice nao cadastrado!")
+                input()
+                continue
+            grf.dfs(inicio, fim)
         elif escolha == 's':
             break
         else:
