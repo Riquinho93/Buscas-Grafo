@@ -39,7 +39,7 @@ class Grafo:
         self.matrizAdjacencias[fim][inicio]
 
     def mostraVertice(self, vertice):
-        print(self.matrizAdjacencias[vertice].rotulo)
+        print(self.listaVertice[vertice].rotulo)
 
     def imprimirMatriz(self):
         print()
@@ -97,14 +97,41 @@ class Grafo:
         for i in self.listaVertice:
             i.limpa() # limpando para fazer outra busca
 
-
+    def bfs(self, inicio, fim):
+        for i in self.listaVertice:
+            i.limpa()
+        fila= []   #pilha em python funciona como lista
+        if inicio == fim:
+            print("Inicio igual ao fim")
+            input()
+            return
+        self.listaVertice[inicio].registrarVisitado()
+        print()
+        print("------ BUSCA EM LARGURA ------ ")
+        print()
+        print("Caminho encontrado: ")
+        self.mostraVertice(inicio)
+        fila.append(inicio)
+        while len(fila) != 0:
+            elementoAtual = fila.pop(0) # remove o primeiro elemento da fila
+            v = self.obtemAdjacenteNaoVisitado(elementoAtual)
+            while v != -1:
+                if v == fim:
+                    self.mostraVertice(v)
+                    return
+                self.listaVertice[v].registrarVisitado()
+                self.mostraVertice(v)
+                fila.append(v)
+                v = self.obtemAdjacenteNaoVisitado(elementoAtual)
+            else:
+                print("Caminho nao encontrado!")
 
 if __name__ == "__main__":
   #  os.system("clear")
     grf = Grafo()
     while True:
         print("Escolha sua opção: ")
-        print("(M)ostrar, (V)ertices,  (A)rcos e (P)rofundidade ")
+        print("(M)ostrar,(V)ertices, (A)rcos,(P)rofundidade, (L)argura ")
         escolha = str(input("Digite sua opção: ")).lower()
         if escolha == 'm':
             grf.imprimirMatriz()
@@ -139,6 +166,20 @@ if __name__ == "__main__":
                 input()
                 continue
             grf.dfs(inicio, fim)
+        elif escolha == 'l':
+            rinicio = str(input("Digite o rotulo do vertice do arco inicial: "))
+            inicio = grf.localizaRotulo(rinicio)
+            if inicio == -1:
+                print("Vertice nao cadastrado!")
+                input()
+                continue
+            rfim = str(input("Digite o rotulo do vertice do arco final: "))
+            fim = grf.localizaRotulo(rfim)
+            if fim == -1:
+                print("Vertice nao cadastrado!")
+                input()
+                continue
+            grf.bfs(inicio, fim)
         elif escolha == 's':
             break
         else:
