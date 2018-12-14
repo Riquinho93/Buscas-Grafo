@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a436c07f-1a2f-4dbb-9deb-2c3d0884d0d1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grafo-matriz/Matriz-Grafo.py" beforeDir="false" afterPath="$PROJECT_DIR$/grafo-matriz/Matriz-Grafo.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="Matriz-Grafo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grafo-matriz/Matriz-Grafo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="132" column="36" lean-forward="true" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
+            <state relative-caret-position="277">
+              <caret line="206" column="26" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -166,7 +167,7 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Python Console" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.15580286" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.40222576" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -186,6 +187,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/grafo-matriz/Matriz-Grafo.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2227">
+          <caret line="131" column="14" selection-start-line="131" selection-start-column="14" selection-end-line="131" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grafo-matriz/Matriz-Grafo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="132" column="36" lean-forward="true" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grafo-matriz/Matriz-Grafo.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
         </state>
@@ -194,8 +209,8 @@
     <entry file="file://$PROJECT_DIR$/grafo-matriz/__init__.py" />
     <entry file="file://$PROJECT_DIR$/grafo-matriz/Matriz-Grafo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="132" column="36" lean-forward="true" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
+        <state relative-caret-position="277">
+          <caret line="206" column="26" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
         </state>
       </provider>
     </entry>

@@ -36,7 +36,7 @@ class Grafo:
 
     def adicionaArco(self, inicio, fim):
         self.matrizAdjacencias[inicio][fim] = 1
-        self.matrizAdjacencias[fim][inicio]
+        self.matrizAdjacencias[fim][inicio] = 1
 
     def mostraVertice(self, vertice):
         print(self.listaVertice[vertice].rotulo)
@@ -126,12 +126,36 @@ class Grafo:
             else:
                 print("Caminho nao encontrado!")
 
+    def mst(self, inicio):
+        pilha = []
+        self.listaVertice[0].registrarVisitado()
+        pilha.append(inicio) # funciona como push
+        print()
+        print("------ BUSCA EM DIJKSTRA ------ ")
+        print()
+        while len(pilha) != 0:
+            elementoAnalisar = pilha[len(pilha) - 1] # retina o elemento sem remover da pilha
+            v = self.obtemAdjacenteNaoVisitado(elementoAnalisar)
+            if v == -1:
+                pilha.pop()   # removendo o elemento da pilha
+            else:
+                self.listaVertice[v].registrarVisitado()
+                pilha.append(v)
+                self.mostraVertice(elementoAnalisar)
+                self.mostraVertice(v)
+                print(" ")
+        for i in self.listaVertice:
+            i.limpa() # limpando para fazer outra busca
+
+
 if __name__ == "__main__":
   #  os.system("clear")
     grf = Grafo()
     while True:
         print("Escolha sua opção: ")
-        print("(M)ostrar,(V)ertices, (A)rcos,(P)rofundidade, (L)argura ")
+        print("(M)ostrar  (V)ertices      (A)rcos")
+        print("(L)argura  (P)rofundidade  (D)ijkstra")
+        print("(S)air")
         escolha = str(input("Digite sua opção: ")).lower()
         if escolha == 'm':
             grf.imprimirMatriz()
@@ -180,6 +204,14 @@ if __name__ == "__main__":
                 input()
                 continue
             grf.bfs(inicio, fim)
+        elif escolha == 'd':
+            rinicio = str(input("Digite o rotulo do vertice inicial: "))
+            inicio = grf.localizaRotulo(rinicio)
+            if inicio == -1:
+                print("Vertice nao cadastrado!!")
+                input()
+                continue
+            grf.mst(inicio)
         elif escolha == 's':
             break
         else:
